@@ -80,9 +80,16 @@ public class Silly implements Comparable<Silly>{
      *       Make sure you document this method!
      */
 
+    /** Creates a new Silly object.
+     * This constructor takes in two String objects as an arguments.
+     *
+     * @param string1 is the first string parameter.
+     * @param string2 is the second string parameter.
+     */
 
-
-
+    public Silly(String string1, String string2){
+        this.name = string1 + string2;
+    }
 
     public static void main(String[] args) {
         /**
@@ -116,7 +123,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0, 1, 2, 3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +141,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -153,7 +161,7 @@ public class Silly implements Comparable<Silly>{
          *                We've started it by checking the type of o for you.
          *                You just need to return true if the names are equal.
          */
-        if (!(o instanceof Silly)){
+        if (!(o instanceof Silly)) {
             return false;
         }
 
@@ -161,8 +169,8 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+        return other.name.equals(this.name);
     }
-
     /**
      * 5. If we want to compare two objects, we have to do two things:
      *    i)  add 'implements Comparable<classname>' to our class header
@@ -184,7 +192,7 @@ public class Silly implements Comparable<Silly>{
      * object is less than, equal to, or greater than the specified object.
      */
     @Override
-    public int compareTo(Silly other) {
+    public int compareTo(Silly other){
         /**
          * TODO (Task 5): Implement the body of this method.
          *                A positive number should be returned if this.name
@@ -194,7 +202,8 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
-    }
+        return this.name.length() - other.name.length();
+        }
 
     /*
      * TODO (Task 6): Submit the changes you made on GitHub!
